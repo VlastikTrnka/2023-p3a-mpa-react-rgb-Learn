@@ -4,20 +4,16 @@ import  {ColorSlidersContext}  from './ColorSliderContextProvicer';
 import { useContext } from 'react';
 import styles  from "./ColorSliders.module.css";
 
-interface useContextType {
-    color: { R: number, G: number, B: number };
-    changeColor: (color: { R: number, G: number, B: number }) => void;
-}
 
 export const ColorSliders:React.FC = () => {
-    const { color, changeColor } = useContext<useContextType>(ColorSlidersContext);
+    const { color, changeColor } = useContext(ColorSlidersContext);
 
     return (
       <div className={styles["container"]}>
             <StyledSlider
             min={0}
             max={255}
-            value={color.R}
+            value={200}
             onChange={(e) => changeColor({R: parseInt(e.currentTarget.value), G: color.G, B: color.B})}
             backgroundColor={
                 `rgb(${color.R}, ${color.G}, ${color.B})`
